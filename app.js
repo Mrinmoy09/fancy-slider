@@ -31,7 +31,7 @@ const showImages = (images) => {
 const getImages = (query) => {
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
     .then(response => response.json())
-    .then(data => showImages(data.hitS))
+    .then(data => showImages(data.hits))
     .catch(err => console.log(err))
 }
 
@@ -77,10 +77,14 @@ const createSlider = () => {
     sliderContainer.appendChild(item)
   })
   changeSlide(0)
+if(duration >= 1000){
   timer = setInterval(function () {
     slideIndex++;
     changeSlide(slideIndex);
-  }, duration);
+  }, duration);}
+  else{
+    alert('Time should be more than 1000 milisecond');
+  }
 }
 
 // change slider index 
